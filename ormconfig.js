@@ -5,7 +5,7 @@ module.exports = {
      "dist/models/**/*.js" // quando mudamos p/ DIST perdemos o script dev:server
    ],
    "migrations": [
-     "./dist/database/migrations/**/*.js"
+     "dist/database/migrations/**/*.js"
    ],
    "cli": {
      "migrationsDir": "./src/database/migrations",
