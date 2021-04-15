@@ -20,6 +20,9 @@ userRouter.post('/', async (request, response) => {
       course,
     });
 
+    // @ts-expect-error ~ ignorando o erro do ts.
+    delete user.password;
+
     return response.status(201).json(user);
   } catch (err) {
     console.log("err.messege: ", err.messege);
