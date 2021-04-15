@@ -1,11 +1,12 @@
 module.exports = {
   "type": "postgres",
    "url": process.env.DATABASE_URL, // acesso BD local, acesso a url no heroku quando remoto (aquela url doida do heroku)
+
    "entities": [
-    process.env.ENVIRONMENT_FLAG_ENTITY // quando mudamos p/ DIST perdemos o script dev:server
+    process.env.PRODUCTION_ENTITY
    ],
    "migrations": [
-     process.env.ENVIRONMENT_FLAG_MIGRATION
+    process.env.PRODUCTION_MIGRATION
    ],
    "cli": {
      "migrationsDir": "./src/database/migrations",
