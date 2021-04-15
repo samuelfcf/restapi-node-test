@@ -3,10 +3,10 @@ module.exports = {
    "url": process.env.DATABASE_URL, // acesso BD local, acesso a url no heroku quando remoto (aquela url doida do heroku)
 
    "entities": [
-    process.env.PRODUCTION_ENTITY
+    process.env.ENVIRONMENT_ENTITY
    ],
    "migrations": [
-    process.env.PRODUCTION_MIGRATION
+    process.env.ENVIRONMENT_MIGRATION
    ],
    "cli": {
      "migrationsDir": "./src/database/migrations",
