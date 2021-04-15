@@ -2,14 +2,25 @@ import { request, response, Router } from "express";
 import User from "../models/User";
 import UserRepository from '../repositories/UserRepository';
 import { getCustomRepository, getRepository } from "typeorm";
+import CreateUserService from '../services/CreateUserService';
 
 const userRouter = Router();
 
-userRouter.post('/', async (request, response) => {
+// criação de usuário via service devido às regras de negócio necessárias (ex. email único, cripto de senhas, etc)
+userRouter.post('/', async (request, response) => { 
   try{
-    const repo = getRepository(User);
-    const resp = await repo.save(request.body);
-    return response.status(201).json(resp);
+    const { name, password, email, course } = request.body;
+
+    const createUser = new CreateUserService();
+
+    const user = await createUser.execute({
+      name,
+      password,
+      email,
+      course,
+    });
+
+    return response.status(201).json(user);
   } catch (err) {
     console.log("err.messege: ", err.messege);
   }
