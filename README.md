@@ -1,6 +1,10 @@
-Criação de RESTAPI para cadastro de usuários utilizando:
+# RESTAPI NodeJS 
+## Techs utilizadas
+* NodeJS
+* Typescript
+* TypeORM
+* BD Postgres
 
--> NodeJS
--> Typescript
--> TypeORM
--> BD Postgres
+## Softawares de apoio
+* DBeaver
+* Insomnia
