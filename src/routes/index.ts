@@ -5,7 +5,13 @@ import sessionsRouter from "./session.router";
 
 const router = Router();
 
-router.use('/user', userRouter);
+router.get('/', (request, response) => {
+    return response.json({
+        messege: "Funcionando!!"
+    })
+});
+
+router.use('/users', userRouter);
 router.use('/sessions', sessionsRouter);
 
 export default router;
