@@ -5,6 +5,6 @@
 * TypeORM
 * BD Postgres
 
-## Softawares de apoio
+## Softwares de apoio
 * DBeaver
 * Insomnia

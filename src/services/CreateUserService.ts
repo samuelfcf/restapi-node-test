@@ -11,7 +11,8 @@ interface Request {
 
 export default class CreateUserService {
   public async execute({ name, password, email, course }:Request): Promise<User> {
-    const userRepository = getRepository(User);
+  
+  const userRepository = getRepository(User);
 
   const checkUserExists = await userRepository.findOne({
       where: {
