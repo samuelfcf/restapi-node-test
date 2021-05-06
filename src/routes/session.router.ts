@@ -10,7 +10,7 @@ sessionsRouter.post('/', async (request, response) => {
     const { email, password } = request.body;
     const authenticateUser = new AuthenticateUserService();
 
-    const { user } = await authenticateUser.execute({
+    const { user, token } = await authenticateUser.execute({
       email,
       password,
     });
@@ -18,10 +18,10 @@ sessionsRouter.post('/', async (request, response) => {
     // @ts-expect-error ~ ignorando o erro do ts
     delete user.password;
 
-    return response.json({ user });
+    return response.json({ user, token });
 
-  } catch (err) {
-    return response.status(400).json({error: err.messege});
+  } catch {
+    return response.status(400).json("Erro de autenticação");
   };
 });
 
