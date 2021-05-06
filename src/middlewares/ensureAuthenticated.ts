@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { decode, verify } from 'jsonwebtoken';
+import AppError from 'src/errors/AppError';
 import authConfig from '../config/auth';
 
 interface TokenPayload {
@@ -15,7 +16,7 @@ export default function ensureAuthenticated(request:Request, response:Response, 
   const authHeader = request.headers.authorization;
 
   if(!authHeader) {
-    throw new Error("Token JWT não informado.");
+    throw new AppError("Token JWT não informado.");
   }
 
   // lembrar que authorization esta no formato 'Bearer asidnbaosdhio'
@@ -32,7 +33,7 @@ try {
 
   return next();
 } catch (err) {
-  throw new Error('token JWT inválido!');
+  throw new AppError('token JWT inválido!', 401);
 }
 
 }

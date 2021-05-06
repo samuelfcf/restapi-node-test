@@ -7,27 +7,26 @@ import CreateUserService from '../services/CreateUserService';
 const userRouter = Router();
 
 // criação de usuário via service devido às regras de negócio necessárias (ex. email único, cripto de senhas, etc)
-userRouter.post('/', async (request, response) => { 
-  try{
-    const { name, password, email, course } = request.body;
+userRouter.post('/', async (request, response) => {
 
-    const createUser = new CreateUserService();
+  const { name, password, email, course } = request.body;
 
-    const user = await createUser.execute({
-      name,
-      password,
-      email,
-      course,
-    });
+  const createUser = new CreateUserService();
 
-    // @ts-expect-error ~ ignorando o erro do ts.
-    delete user.password;
+  const user = await createUser.execute({
+    name,
+    password,
+    email,
+    course,
+  });
 
-    return response.status(201).json(user);
-  } catch (err) {
-    console.log("err.messege: ", err.messege);
-  }
-});
+  // @ts-expect-error ~ ignorando o erro do ts.
+  delete user.password;
+
+  return response.status(201).json(user);
+
+}
+);
 
 userRouter.get('/', async (request, response) => {
   const repo = getRepository(User);

@@ -3,6 +3,7 @@ import User from "../models/User";
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import authConfig from '../config/auth';
+import AppError from '../errors/AppError';
 
 interface Request {
   email: string,
@@ -25,13 +26,13 @@ export default class AuthenticateUserService {
     });
 
     if (!user) {
-      throw new Error('Ops! Combinação email/senha está incorreta.')
+      throw new AppError('Ops! Combinação email/senha está incorreta.', 401)
     }
 
     const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
-      throw new Error('Ops! Combinação email/senha está incorreta.')
+      throw new AppError('Ops! Combinação email/senha está incorreta.', 401)
     }
 
     //Usuário autenticado!!

@@ -1,28 +1,26 @@
-import { request, response, Router } from "express";
+import { Router } from "express";
 import AuthenticateUserService from "../services/AuthenticateUserService";
 
 const sessionsRouter = Router();
 
 
-sessionsRouter.post('/', async (request, response) => { 
-  try{
-    
-    const { email, password } = request.body;
-    const authenticateUser = new AuthenticateUserService();
+sessionsRouter.post('/', async (request, response) => {
 
-    const { user, token } = await authenticateUser.execute({
-      email,
-      password,
-    });
 
-    // @ts-expect-error ~ ignorando o erro do ts
-    delete user.password;
+  const { email, password } = request.body;
+  const authenticateUser = new AuthenticateUserService();
 
-    return response.json({ user, token });
+  const { user, token } = await authenticateUser.execute({
+    email,
+    password,
+  });
 
-  } catch {
-    return response.status(400).json("Erro de autenticação");
-  };
-});
+  // @ts-expect-error ~ ignorando o erro do ts
+  delete user.password;
+
+  return response.json({ user, token });
+
+}
+);
 
 export default sessionsRouter;
