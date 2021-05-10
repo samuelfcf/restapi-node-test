@@ -14,8 +14,7 @@ export class AddOtherDataToUser1620345695756 implements MigrationInterface {
                     "outro"
                 ]
                 
-            }),
-            
+            })
         )
 
     }
