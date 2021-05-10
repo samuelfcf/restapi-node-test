@@ -1,17 +1,19 @@
 import { getRepository } from "typeorm";
-import User from "../models/User";
+import User, { Gender } from "../models/User";
 import { hash } from 'bcryptjs';
 import AppError from "src/errors/AppError";
+
 
 interface Request {
   name: string;
   password: string;
   email: string;
   course: string;
+  gender: Gender
 }
 
 export default class CreateUserService {
-  public async execute({ name, password, email, course }:Request): Promise<User> {
+  public async execute({ name, password, email, course, gender}:Request): Promise<User> {
   
   const userRepository = getRepository(User);
 
@@ -32,6 +34,7 @@ export default class CreateUserService {
     password: hashedPassoword,
     email,
     course,
+    gender
   });
 
   await userRepository.save(user);

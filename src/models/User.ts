@@ -1,7 +1,14 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
+export enum Gender {
+  Male = "masculino",
+  Female = "feminino",
+  Other = "outro"
+}
+
+
 @Entity('users')
-export default class User{
+class User{
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -23,4 +30,9 @@ export default class User{
   @UpdateDateColumn()
   updated_at: Date;
 
+  @Column({type: 'text', nullable: false})
+  gender: Gender;
+
 }
+
+export default User

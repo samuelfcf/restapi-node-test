@@ -9,7 +9,7 @@ const userRouter = Router();
 // criação de usuário via service devido às regras de negócio necessárias (ex. email único, cripto de senhas, etc)
 userRouter.post('/', async (request, response) => {
 
-  const { name, password, email, course } = request.body;
+  const { name, password, email, course, gender } = request.body;
 
   const createUser = new CreateUserService();
 
@@ -18,6 +18,7 @@ userRouter.post('/', async (request, response) => {
     password,
     email,
     course,
+    gender
   });
 
   // @ts-expect-error ~ ignorando o erro do ts.
