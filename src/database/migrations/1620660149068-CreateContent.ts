@@ -1,6 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateContent1620657616741 implements MigrationInterface {
+export class CreateContent1620660149068 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -15,7 +15,7 @@ export class CreateContent1620657616741 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: 'dicription',
+                        name: 'discription',
                         type: 'varchar'
                     },
                     {
@@ -28,6 +28,7 @@ export class CreateContent1620657616741 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('content')
     }
 
 }
