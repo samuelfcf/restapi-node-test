@@ -1,4 +1,4 @@
-import Class from "src/models/Class";
+import Class from "../models/Class";
 import { EntityRepository, Repository } from "typeorm";
 
 @EntityRepository(Class)
