@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class CreateUser1618409130687 implements MigrationInterface {
 
@@ -12,7 +12,7 @@ export class CreateUser1618409130687 implements MigrationInterface {
                         type: 'uuid',
                         isUnique: true,
                         generationStrategy: 'uuid',
-                        default: 'uuid_generate_v4()' 
+                        default: 'uuid_generate_v4()'
                     },
                     {
                         name: 'name',
@@ -30,6 +30,16 @@ export class CreateUser1618409130687 implements MigrationInterface {
                     {
                         name: 'course',
                         type: 'varchar',
+                    },
+                    {
+                        name: 'gender',
+                        type: 'enum',
+                        enum: [
+                            "masculino",
+                            "feminino",
+                            "outro"
+                        ],
+                        isNullable: false
                     },
                     {
                         name: 'created_at',
