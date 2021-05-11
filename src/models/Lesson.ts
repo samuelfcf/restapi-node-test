@@ -1,12 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import Content from "./Content";
 
 @Entity('lesson')
 class Lesson{
   @PrimaryGeneratedColumn('uuid')
-  idAula: string;
+  id: string;
 
   @Column()
   description: string;
+
+  @OneToOne(type => Content, lesson => Lesson)
+  content: Content
 
 }
 

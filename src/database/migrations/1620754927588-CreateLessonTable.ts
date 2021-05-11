@@ -8,7 +8,7 @@ export class CreateLesson1620657763421 implements MigrationInterface {
                 name: 'lesson',
                 columns: [
                     {
-                        name: 'idAula',
+                        name: 'id',
                         type: 'uuid',
                         isUnique: true,
                         generationStrategy: 'uuid',
@@ -17,7 +17,7 @@ export class CreateLesson1620657763421 implements MigrationInterface {
                     {
                         name: 'description',
                         type: 'varchar'
-                    }
+                    },
                 ]
             })
         )

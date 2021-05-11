@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import Lesson from "./Lesson";
 
 @Entity('content')
 class Content{
@@ -10,6 +11,13 @@ class Content{
 
   @Column()
   linkContent: string;
+
+  @Column()
+  lesson_id: string
+
+  @OneToOne(type => Lesson, content => Content)
+  @JoinColumn()
+  lesson: Lesson
 
 }
 

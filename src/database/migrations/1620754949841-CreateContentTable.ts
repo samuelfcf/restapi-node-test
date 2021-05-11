@@ -15,13 +15,18 @@ export class CreateContent1620660149068 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: 'discription',
+                        name: 'description',
                         type: 'varchar'
                     },
                     {
                         name: 'linkContent',
                         type: 'varchar'
+                    },
+                    {
+                        name: 'lesson_id',
+                        type: 'uuid'
                     }
+                    
                 ]
             })
         )
