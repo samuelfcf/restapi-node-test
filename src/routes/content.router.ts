@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import Content from "src/models/Content";
+import Content from "../models/Content";
 import { getRepository } from "typeorm";
 
 const contentRouter = Router();

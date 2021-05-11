@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import Lesson from "src/models/Lesson";
+import Lesson from "../models/Lesson";
 import { getRepository } from "typeorm";
 
 const lessonRouter = Router();

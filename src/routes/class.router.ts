@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Class from "src/models/Class";
+import Class from "../models/Class";
 import ClassRepository from "src/repositories/ClassRepository";
 import { getCustomRepository, getRepository } from "typeorm";
 
